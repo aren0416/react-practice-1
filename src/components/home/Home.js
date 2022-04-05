@@ -34,6 +34,8 @@ export const Home = () => {
   // }, []);
 
   const [nowPlaying, setNowPlaying] = useState();
+  const [popular, setPopular] = useState();
+  const [upComing, setUpComing] = useState();
 
   useEffect(() => {
     const movieData = async () => {
@@ -42,11 +44,23 @@ export const Home = () => {
       } = await movieApi.nowPlaying();
       // console.log(nowPlayingData);
       setNowPlaying(nowPlayingData);
+
+      const {
+        data: { results: popularData },
+      } = await movieApi.popular();
+      setPopular(popularData);
+
+      const {
+        data: { results: upComingData },
+      } = await movieApi.upComing();
+      setUpComing(upComingData);
     };
     movieData();
   }, []);
 
-  console.log(nowPlaying);
+  console.log("현재 상영 영화", nowPlaying);
+  console.log("인기 영화", popular);
+  console.log("개봉 예정 영화", upComing);
 
   return (
     <>
