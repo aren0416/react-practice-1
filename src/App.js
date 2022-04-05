@@ -3,10 +3,12 @@ import { Detail } from "./components/detail/Detail";
 import { Home } from "./components/home/Home";
 import { PageNotFound } from "./components/PageNotFound";
 import { Search } from "./components/search/Search";
+import { GlobalStyles } from "./components/styles/GlobalStyled";
 
 function App() {
   return (
     <Router>
+      <GlobalStyles />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/detail" element={<Detail />}></Route>

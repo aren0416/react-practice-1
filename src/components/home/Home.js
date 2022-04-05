@@ -33,20 +33,29 @@ export const Home = () => {
   // => 항상 까먹지 않게 함수는 호출 필수
   // }, []);
 
+  const [nowPlaying, setNowPlaying] = useState();
+
   useEffect(() => {
     const movieData = async () => {
       const {
-        data: { results },
+        data: { results: nowPlayingData },
       } = await movieApi.nowPlaying();
-      console.log(results);
+      // console.log(nowPlayingData);
+      setNowPlaying(nowPlayingData);
     };
     movieData();
   }, []);
+
+  console.log(nowPlaying);
 
   return (
     <>
       <PageTitle title={"Home"} />
       <h1>Home</h1>
+      {/* {nowPlaying && nowPlaying.map((play) => console.log(play.title))} */}
+      {/* {nowPlaying
+        ? nowPlaying.map((play) => console.log(play.title))
+        : "loading..."} */}
     </>
   );
 };
