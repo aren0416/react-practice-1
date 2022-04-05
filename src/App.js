@@ -1,5 +1,6 @@
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { Detail } from "./components/detail/Detail";
+import { Header } from "./components/Header";
 import { Home } from "./components/home/Home";
 import { PageNotFound } from "./components/PageNotFound";
 import { Search } from "./components/search/Search";
@@ -10,6 +11,7 @@ function App() {
   return (
     <Router>
       <GlobalStyles />
+      <Header />
       <Routes>
         <Route path={routes.home} element={<Home />} />
         <Route path={routes.detail} element={<Detail />}></Route>
