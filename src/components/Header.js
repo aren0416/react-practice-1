@@ -23,7 +23,8 @@ const MenuWrap = styled.ul`
 `;
 
 const Menu = styled.li`
-  margin-left: 30px;
+  margin-left: 80px;
+  font-weight: 600;
 `;
 
 export const Header = () => {
