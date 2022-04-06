@@ -44,7 +44,7 @@ export const MainBanner = ({ data }) => {
       bgUrl={`url(https://image.tmdb.org/t/p/original${data.backdrop_path})`}
     >
       <Title>{data.title}</Title>
-      <Desc>{data.overview}</Desc>
+      <Desc>{data.overview.slice(0, 100) + "..."}</Desc>
       <BlackBox />
     </SMainBanner>
   );
