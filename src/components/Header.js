@@ -8,9 +8,11 @@ const SHeader = styled.header`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 9;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 40px;
 `;
 
 const Logo = styled.div`

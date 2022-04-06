@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { movieApi } from "../../api";
 import { PageTitle } from "../PageTitle";
+import { MainBanner } from "./MainBanner";
 
 //console.log(movieApi.nowPlaying());
 // 1 => 먼저 api에서 불러올 내용 콘솔에 확인
@@ -65,11 +66,7 @@ export const Home = () => {
   return (
     <>
       <PageTitle title={"Home"} />
-      <h1>Home</h1>
-      {/* {nowPlaying && nowPlaying.map((play) => console.log(play.title))} */}
-      {/* {nowPlaying
-        ? nowPlaying.map((play) => console.log(play.title))
-        : "loading..."} */}
+      {nowPlaying ? <MainBanner data={nowPlaying[0]} /> : "Loading"}
     </>
   );
 };
