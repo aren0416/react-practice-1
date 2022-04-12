@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { movieApi } from "../../api";
+import { Loading } from "../Loading";
 import { PageTitle } from "../PageTitle";
 import { MainBanner } from "./MainBanner";
 
@@ -37,6 +38,7 @@ export const Home = () => {
   const [nowPlaying, setNowPlaying] = useState();
   const [popular, setPopular] = useState();
   const [upComing, setUpComing] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const movieData = async () => {
@@ -55,6 +57,7 @@ export const Home = () => {
         data: { results: upComingData },
       } = await movieApi.upComing();
       setUpComing(upComingData);
+      setLoading(false);
     };
     movieData();
   }, []);
@@ -66,7 +69,12 @@ export const Home = () => {
   return (
     <>
       <PageTitle title={"Home"} />
-      {nowPlaying ? <MainBanner data={nowPlaying[0]} /> : "Loading"}
+      {/* {nowPlaying ? <MainBanner data={nowPlaying[0]} /> : <Loading />} */}
+      {loading ? (
+        <Loading />
+      ) : (
+        nowPlaying && <MainBanner data={nowPlaying[0]} />
+      )}
     </>
   );
 };
