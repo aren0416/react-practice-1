@@ -5,6 +5,11 @@ export const mainFont = {
   fontColor: "#fff",
 };
 
+export const mainTitle = {
+  fontSize: " 40px",
+  fontWeight: "800",
+};
+
 export const mainDesc = {
   fontSize: "18px",
   fontWeight: "300",
@@ -27,5 +32,6 @@ export const GlobalStyles = createGlobalStyle`
         letter-spacing: -1px;
         word-break: keep-all;
         font-family: 'Noto Sans KR', sans-serif;
+        color: white;
     }
 `;
