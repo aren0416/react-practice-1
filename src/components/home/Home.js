@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { movieApi } from "../../api";
 import { Container } from "../Container";
 import { Loading } from "../Loading";
@@ -41,9 +42,10 @@ export const Home = () => {
   const [popular, setPopular] = useState();
   const [upComing, setUpComing] = useState();
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const movieData = async () => {
+  const movieData = async () => {
+    try {
       const {
         data: { results: nowPlayingData },
       } = await movieApi.nowPlaying();
@@ -60,13 +62,16 @@ export const Home = () => {
       } = await movieApi.upComing();
       setUpComing(upComingData);
       setLoading(false);
-    };
-    movieData();
-  }, []);
+    } catch (error) {
+      navigate("/*");
+    }
+  };
 
-  console.log("현재 상영 영화", nowPlaying);
-  console.log("인기 영화", popular);
-  console.log("개봉 예정 영화", upComing);
+  useEffect(movieData, []);
+
+  // console.log("현재 상영 영화", nowPlaying);
+  // console.log("인기 영화", popular);
+  // console.log("개봉 예정 영화", upComing);
 
   return (
     <>

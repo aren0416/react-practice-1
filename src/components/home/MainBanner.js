@@ -1,5 +1,6 @@
 import { mainDesc, mainFont } from "../styles/GlobalStyled";
 import styled from "styled-components";
+import { IMG_URL } from "../../contents";
 
 const SMainBanner = styled.div`
   height: 80vh;
@@ -40,9 +41,7 @@ const BlackBox = styled.div`
 
 export const MainBanner = ({ data }) => {
   return (
-    <SMainBanner
-      bgUrl={`url(https://image.tmdb.org/t/p/original${data.backdrop_path})`}
-    >
+    <SMainBanner bgUrl={`url(${IMG_URL}${data.backdrop_path})`}>
       <Title>{data.title}</Title>
       <Desc>{data.overview.slice(0, 100) + "..."}</Desc>
       <BlackBox />
